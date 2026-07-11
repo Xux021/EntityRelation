@@ -1,0 +1,48 @@
+{
+  "version": "formal_v3.0",
+  "random_seed": 20260707,
+  "v2_2_inputs": {
+    "events_accepted": "../formal_v2/output/03_events_accepted_v22.csv",
+    "relations_gold": "../formal_v2/output/04_relations_gold_v22.csv"
+  },
+  "phase1": {
+    "manual_seed_pairs": 400,
+    "manual_test_pairs": 200,
+    "test_sampling_targets": {
+      "potential_causal": 70,
+      "potential_temporal": 60,
+      "hard_negative": 60,
+      "random_negative": 10
+    },
+    "seed_sampling_targets": {
+      "potential_causal": 140,
+      "potential_temporal": 120,
+      "hard_negative": 100,
+      "random_negative": 40
+    },
+    "max_sentence_distance": 1,
+    "require_story_disjoint_splits": true,
+    "freeze_step_05_to_11": true
+  },
+  "implicit_candidate_rules": {
+    "require_accepted_events": true,
+    "exclude_explicit_covered_pairs": true,
+    "require_affirmed_events": true,
+    "minimum_high_recall_reason_count": 1,
+    "positive_reasons": [
+      "shared_standardized_participant",
+      "reliable_pronoun_continuity",
+      "subject_inheritance",
+      "source_core_participant_in_target",
+      "action_or_motion_to_state_change",
+      "continuous_action_structure",
+      "role_transition"
+    ]
+  },
+  "model_phase": {
+    "main_encoder": "hfl/chinese-macbert-base",
+    "comparison_encoder": "hfl/chinese-roberta-wwm-ext",
+    "do_not_train_in_phase1": true,
+    "do_not_run_step_05_to_11_in_phase1": true
+  }
+}
